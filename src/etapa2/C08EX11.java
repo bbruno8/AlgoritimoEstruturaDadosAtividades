@@ -5,7 +5,7 @@ import javax.swing.*;
 public class C08EX11 {
     //Bruno Constantino Gomes da Costa
     public static void main(String[] args) {
-        String nome, sexo,estadoCivil,corOlhos,corCabelo, escolaridade,idadeStr,salarioStr,nomeSalario;
+        String nome, sexo,estadoCivil,corOlhos,corCabelo, escolaridade,idadeStr,salarioStr,nomeSalario="";
         String [] opcoesSexo ={"Masculino","Feminino"},
                 opcoesCivil={"Casado","Solteiro","Outro"},
                 opcoesOlhos={"Azuis","Castanhos","Pretos","Outros"},
@@ -13,8 +13,9 @@ public class C08EX11 {
                 opcoesEscolaridade={"1-Anafalbeto","2-Ensino Fundamental","3-Ensino Médio","4-Ensino Superior"};
 
         double maiorSalario=0,menorSalario=0;
-        int cont;
-        for (int i =0;i<3;i++){
+        int cont=0;
+        for (int i =0;i<50;i++){
+
 
             nome = JOptionPane.showInputDialog(null,
                     "Digite seu primeiro nome:",
@@ -92,9 +93,23 @@ public class C08EX11 {
             if (i == 1 || salario<menorSalario ){
                 menorSalario = salario;
             }
-
-
+            //Escolhas específicas
+            if (sexo.equals("Feminino") &&
+                            corOlhos.equals("Azuis") &&
+                            corCabelo.equals("Loiro") &&
+                            idade >= 18 && idade <= 25 &&
+                            salario > 10000 &&
+                            escolaridade.equals("4-Ensino Superior")){
+                cont++;
             }
 
-        }
+            }
+        JOptionPane.showMessageDialog(null,
+                "Nome da pessoa com maior salário:"+nomeSalario
+                        +"\nDiferença emtre o maior e o menor salário dos homens: R$"+(maiorSalario-menorSalario)
+                        +"\nQuantidade de mulheres específicas:"+cont,
+                "Resultados",
+                JOptionPane.INFORMATION_MESSAGE);
+
+    }
     }
